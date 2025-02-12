@@ -1,0 +1,44 @@
+<div
+  class="w-50 bg-light h-50 mx-auto mt-5 p-4 text-center border border-dark border-5"
+>
+    <h4>Login Form</h4>
+  <form action="" [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <input
+      type="email"
+      class="form form-control"
+      size="50"
+      placeholder="Enter Username"
+      formControlName="username"
+    /><br />
+    <div *ngIf="username?.touched && username?.invalid">
+      <p class="text-danger" *ngIf="username?.errors?.['required']">
+        Username is Required
+      </p>
+      <p class="text-danger" *ngIf="username?.errors?.['minlength']">
+        min length should be 3
+      </p>
+      <p class="text-danger" *ngIf="username?.errors?.['email']">
+        username should be email address
+      </p>
+    </div>
+    <input
+      type="password"
+      class=" form form-control"
+      size="50"
+      placeholder="Enter Password"
+      formControlName="password"
+    /><br />
+    <div *ngIf="password?.touched && password?.invalid" >
+      <p class="text-danger" *ngIf="password?.errors?.['required']">
+        password is Required
+      </p>
+      <p class="text-danger" *ngIf="password?.errors?.['minlength']">
+        min length should be 8
+      </p>
+      <p class="text-danger" *ngIf="password?.errors?.['maxlength']">
+        max length should be 12
+      </p>
+    </div>
+    <button class="btn btn-success form form-control " [disabled]="myform.invalid">Login</button>
+  </form>
+</div>

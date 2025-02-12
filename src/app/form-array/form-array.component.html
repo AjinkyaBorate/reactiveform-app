@@ -1,0 +1,14 @@
+<div class="w-50 p-3 bg-secondary m-3">
+    <p>Form Array Demo</p>
+    <form [formGroup]="myform">
+        <div formArrayName="contactlist">
+            <div *ngFor="let c of contactlist.controls;let i=index">
+                <input type="text" name="contact" [formControlName]="i" placeholder="Enter">
+                 <button (click)="removeContact(i)" class="btn btn-danger m-2">Remove</button>
+            </div>
+            <button (click)="addNewContact()" class="btn btn-primary m-2" >Add new contact</button>
+        </div>
+        
+    </form>
+    
+</div>

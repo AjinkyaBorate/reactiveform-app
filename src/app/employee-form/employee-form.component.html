@@ -1,0 +1,57 @@
+<h1 class="m-2">Employee Form</h1>
+<div class="m-2">
+  <form action="" class="" [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <div class="mb-2">
+      <input
+        type="text"
+        size="50"
+        formControlName="name"
+        placeholder="Enter Your Name"
+      />
+      <div *ngIf="name?.touched && name?.invalid">
+        <!-- <p class="m-2" *ngIf="name?.touched">This field is touched</p>
+                <p class="m-2" *ngIf="name?.untouched">This field is untouched</p>
+                <p class="m-2" *ngIf="name?.valid">This field is valid</p>
+                <p class="m-2" *ngIf="name?.invalid">This field is invalid</p> -->
+        <p class="text-danger" *ngIf="name?.errors?.['required']">
+          Name is Required
+        </p>
+        <p class="text-danger" *ngIf="name?.errors?.['minlength']">
+          min length should be 3
+        </p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <input
+        type="text"
+        size="50"
+        formControlName="age"
+        placeholder="Enter Your Age"
+      />
+      <div *ngIf="age?.touched && age?.invalid">
+        <!-- <p class="m-2" *ngIf="age?.dirty">This field is changed</p>
+                <p class="m-2" *ngIf="age?.pristine">This field is not changed</p> -->
+        <p class="text-danger" *ngIf="age?.errors?.['required']">
+          Age is Required
+        </p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <input
+        type="text"
+        size="50"
+        formControlName="email"
+        placeholder="Enter Your Email"
+      />
+      <div *ngIf="email?.touched && email?.invalid">
+        <p class="text-danger" *ngIf="email?.errors?.['required']">
+          Email is Required
+        </p>
+      </div>
+    </div>
+    <div>
+      <!-- By default submit data for form , only one button for form -->
+      <button class="btn btn-primary" size="50">Save</button>
+    </div>
+  </form>
+</div>
